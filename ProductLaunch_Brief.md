@@ -1,12 +1,12 @@
 # ProductLaunch_Brief.md
-# Instructions: Do not change the field labels, only fill in the values after the colon 
-# Leave a field blank if unknown
-# Save this file [ProductName]_Launch_Brief.md after getting inputs from Product Manager or team member
-# Share it with AI assistant to generate your full GTM plan.
+### Instructions: Do not change the field labels, only fill in the values after the colon 
+### Leave a field blank if unknown
+### Save this file [ProductName]_Launch_Brief.md after getting inputs from Product Manager or team member
+### Share it with AI assistant to generate your full GTM plan.
 
 ---
 
-## PRODUCT BASICS
+### PRODUCT BASICS
 
 Product Name: 
 One-line Description: 
@@ -16,7 +16,7 @@ Is this a new product or a new feature of an existing product:
 
 ---
 
-## THE PROBLEM
+### THE PROBLEM
 
 Market Pressure (what external force is creating urgency for buyers): 
 Gap in Current Solutions (why do existing tools fail): 
@@ -25,7 +25,7 @@ Your Solution (one sentence what does the product do and for whom):
 
 ---
 
-## TARGET BUYER
+### TARGET BUYER
 
 Economic Buyer Title (who signs the contract): 
 End User Title (who uses the product daily): 
@@ -35,7 +35,7 @@ Geography (Americas / EMEA / APAC / Global):
 
 ---
 
-## BUYER PAIN POINTS
+### BUYER PAIN POINTS
 
 Pain Point 1 (business level): 
 Pain Point 2 (team level): 
@@ -43,20 +43,20 @@ Pain Point 3 (tool or process level):
 
 ---
 
-## BUYING TRIGGERS
+### BUYING TRIGGERS
 
 Trigger 1 (event that makes them start looking): 
 Trigger 2 (internal pressure or external event): 
 
 ---
-## BUYER OBJECTIONS
+### BUYER OBJECTIONS
 
 Objection 1: 
 Objection 2: 
 
 ---
 
-## COMPETITIVE LANDSCAPE
+### COMPETITIVE LANDSCAPE
 
 Primary Competitor: 
 What competitor does well: 
@@ -65,7 +65,7 @@ Your Key Differentiator (the one thing you do that they cannot):
 
 ---
 
-## MESSAGING
+### MESSAGING
 
 Tagline (optional): 
 Top Value Proposition 1: 
@@ -74,7 +74,7 @@ Top Value Proposition 3:
 
 ---
 
-## LAUNCH DETAILS
+### LAUNCH DETAILS
 
 Launch Date or Target Quarter: 
 Launch Type (soft launch / full launch / beta launch): 
@@ -83,7 +83,7 @@ Regions to Launch In:
 
 ---
 
-## CHANNELS
+### CHANNELS
 
 Preferred Channels (select all that apply):
 - Email: yes / no
@@ -97,7 +97,7 @@ Preferred Channels (select all that apply):
 
 ---
 
-## SUCCESS METRICS
+### SUCCESS METRICS
 
 Primary Goal (awareness / pipeline / adoption / retention): 
 Target Email Open Rate (leave blank for default benchmark): 
@@ -108,7 +108,7 @@ Target Renewal Rate (leave blank for default benchmark):
 
 ---
 
-## RISKS
+### RISKS
 
 Risk 1: 
 Risk 2: 
@@ -116,7 +116,7 @@ Risk 3:
 
 ---
 
-## ADDITIONAL CONTEXT
+### ADDITIONAL CONTEXT
 
 Additional Context (anything else relevant about this product, market, or launch)
 
