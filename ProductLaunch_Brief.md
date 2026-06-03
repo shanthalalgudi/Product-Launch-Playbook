@@ -37,49 +37,49 @@ Geography (Americas / EMEA / APAC / Global):
 
 ### BUYER PAIN POINTS
 
-Pain Point 1 (business level): 
-Pain Point 2 (team level): 
-Pain Point 3 (tool or process level): 
+- Pain Point 1 (business level): 
+- Pain Point 2 (team level): 
+- Pain Point 3 (tool or process level): 
 
 ---
 
 ### BUYING TRIGGERS
 
-Trigger 1 (event that makes them start looking): 
-Trigger 2 (internal pressure or external event): 
+- Trigger 1 (event that makes them start looking): 
+- Trigger 2 (internal pressure or external event): 
 
 ---
 ### BUYER OBJECTIONS
 
-Objection 1: 
-Objection 2: 
+- Objection 1: 
+- Objection 2: 
 
 ---
 
 ### COMPETITIVE LANDSCAPE
 
-Primary Competitor: 
-What competitor does well: 
-Where competitor falls short: 
-Your Key Differentiator (the one thing you do that they cannot): 
+- Primary Competitor: 
+- What competitor does well: 
+- Where competitor falls short: 
+- Your Key Differentiator (the one thing you do that they cannot): 
 
 ---
 
 ### MESSAGING
 
 Tagline (optional): 
-Top Value Proposition 1: 
-Top Value Proposition 2: 
-Top Value Proposition 3: 
+- Top Value Proposition 1: 
+- Top Value Proposition 2: 
+- Top Value Proposition 3: 
 
 ---
 
 ### LAUNCH DETAILS
 
-Launch Date or Target Quarter: 
-Launch Type (soft launch / full launch / beta launch): 
-Budget Level (low / medium / high — rough indication): 
-Regions to Launch In: 
+- Launch Date or Target Quarter: 
+- Launch Type (soft launch / full launch / beta launch): 
+- Budget Level (low / medium / high — rough indication): 
+- Regions to Launch In: 
 
 ---
 
@@ -110,9 +110,9 @@ Target Renewal Rate (leave blank for default benchmark):
 
 ### RISKS
 
-Risk 1: 
-Risk 2: 
-Risk 3: 
+- Risk 1: 
+- Risk 2: 
+- Risk 3: 
 
 ---
 
@@ -121,4 +121,4 @@ Risk 3:
 Additional Context (anything else relevant about this product, market, or launch)
 
 ---
-# End of Input Template
+## End of Input Template
