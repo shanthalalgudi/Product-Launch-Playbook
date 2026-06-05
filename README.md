@@ -14,7 +14,11 @@ A reusable Product Launch framework for B2B SaaS and AI products. Includes an in
 
 ## Productivity Tool
 
-This playbook streamlines product launch planning. A Product Manager or team member fills in a structured brief — business problem, persona, messaging, channels, metrics, and risks — and an AI assistant generates a complete Product Launch Plan in minutes.
+This is a reusable AI-powered framework that generates a complete Product 
+Launch Plan from a structured PM input brief. To demonstrate it in action, 
+a fictional B2B SaaS product called CodeSpark Assist was used as the worked 
+example covering competitive positioning, messaging, launch channels, 
+metrics, and risk.
 
 ---
 
