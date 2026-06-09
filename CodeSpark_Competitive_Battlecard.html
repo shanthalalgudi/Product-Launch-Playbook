@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Battlecard — CodeSpark Assist vs GitHub Copilot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0D1B2A;
+    --spark: #0F4C81;
+    --spark-mid: #1A6BBF;
+    --spark-pale: #E8F0FA;
+    --accent: #E85D04;
+    --accent-light: #FFF3ED;
+    --win: #1B7A3E;
+    --win-light: #EAF5EE;
+    --lose: #8B1A1A;
+    --lose-light: #FDF0F0;
+    --neutral: #4A4A5A;
+    --muted: #8A8A9A;
+    --border: #D8DDE8;
+    --bg: #F4F7FC;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--neutral);
+    padding: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* PORTFOLIO BAR */
+  .portfolio-bar {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 7px 20px;
+    font-size: 12.5px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+  }
+  .portfolio-bar a { color: #FFB347; text-decoration: none; }
+
+  /* HEADER */
+  .header {
+    background: var(--spark);
+    color: white;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -50px; top: -50px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .header-left h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  .header-left p {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    opacity: 0.65;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  .vs-badge {
+    background: var(--accent);
+    color: white;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* OVERVIEW */
+  .overview {
+    display: grid;
+    grid-template-columns: 1fr 52px 1fr;
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+  }
+
+  .product-us {
+    padding: 18px 22px;
+    background: var(--spark-pale);
+    border-right: 1px solid var(--border);
+  }
+
+  .product-them {
+    padding: 18px 22px;
+    background: #FAFAFA;
+  }
+
+  .product-us h3 {
+    font-family: 'Syne', sans-serif;
+    color: var(--spark);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .product-them h3 {
+    font-family: 'Syne', sans-serif;
+    color: var(--neutral);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .product-us p, .product-them p { font-size: 12px; line-height: 1.55; }
+
+  .vs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--accent);
+    border-right: 1px solid var(--border);
+    background: white;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    padding: 9px 18px;
+    font-family: 'Syne', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    border-top: none;
+  }
+
+  .section-header.win { background: var(--win); color: white; }
+  .section-header.lose { background: var(--lose-light); color: var(--lose); border-color: #E8C0C0; }
+  .section-header.blue { background: var(--spark); color: white; }
+  .section-header.amber { background: var(--accent); color: white; }
+
+  /* CONTENT BOXES */
+  .content-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 14px 20px;
+  }
+
+  .content-box.lose-bg { background: var(--lose-light); }
+  .content-box.win-bg { background: var(--win-light); }
+
+  /* ITEM */
+  .item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .item:last-child { margin-bottom: 0; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .dot-win { background: var(--win); }
+  .dot-lose { background: var(--lose); }
+  .dot-blue { background: var(--spark); }
+
+  .item-text { font-size: 12.5px; line-height: 1.55; }
+  .item-text strong { font-weight: 600; }
+
+  /* WIN GRID */
+  .win-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    border-top: none;
+  }
+
+  .win-col {
+    padding: 16px 20px;
+    background: var(--win-light);
+    border-right: 1px solid var(--border);
+  }
+
+  .win-col:last-child {
+    border-right: none;
+    background: white;
+  }
+
+  .win-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--win);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .win-col:last-child h4 { color: var(--spark); }
+
+  /* OBJECTION TABLE */
+  .obj-row {
+    display: grid;
+    grid-template-columns: 195px 1fr;
+    border: 1px solid var(--border);
+    border-top: none;
+  }
+
+  .obj-row:nth-child(even) .obj-q { background: #F0F4FA; }
+  .obj-row:nth-child(even) .obj-a { background: #FAFAFA; }
+
+  .obj-q {
+    padding: 13px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--spark);
+    border-right: 1px solid var(--border);
+    background: white;
+    line-height: 1.45;
+  }
+
+  .obj-a {
+    padding: 13px 15px;
+    font-size: 12px;
+    line-height: 1.55;
+    background: white;
+  }
+
+  /* TRAP GRID */
+  .trap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    border-top: none;
+    background: white;
+  }
+
+  .trap-item {
+    padding: 13px 17px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .trap-item:nth-child(2n) { border-right: none; }
+  .trap-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .trap-item .q-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  .trap-item p {
+    font-size: 12px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--neutral);
+  }
+
+  /* SUMMARY BAR */
+  .summary-bar {
+    background: var(--ink);
+    color: white;
+    padding: 15px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid var(--ink);
+    border-top: none;
+  }
+
+  .summary-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #FFB347;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .summary-text { font-size: 13px; font-weight: 400; line-height: 1.5; opacity: 0.9; }
+  .summary-accent { color: #FFB347; font-weight: 600; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 10px;
+    color: #AAA;
+    font-family: 'DM Mono', monospace;
+  }
+  .footer a { color: #888; text-decoration: none; }
+  .footer a:hover { color: var(--spark); }
+</style>
+</head>
+<body>
+
+<!-- PORTFOLIO BAR -->
+ <!--
+<div class="portfolio-bar">
+  <span>Portfolio Project — AI-Powered Product Launch Playbook &nbsp;&nbsp;</span><b></b>
+  <a href="https://github.com/shanthalalgudi/Product-Launch-Playbook" target="_blank">github.com/shanthalalgudi/Product-Launch-Playbook</a>
+</div>
+--!>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h2>Competitive Battlecard</h2>
+    <p><h3>CodeSpark Assist vs GitHub Copilot &nbsp;|&nbsp; AI Coding Assistant &nbsp;|&nbsp; Enterprise B2B</h3></p>
+    <p><a href="https://github.com/shanthalalgudi/Product-Launch-Playbook" target="_blank" style="color: #ffffff; text-decoration: underline; font-size: 16px">
+      github.com/shanthalalgudi/Product-Launch-Playbook</a>
+  </div>
+  <div class="vs-badge">Portfolio — PMM</div>
+</div>
+
+<!-- PRODUCT OVERVIEW -->
+<div class="overview">
+  <div class="product-us">
+    <h3>CodeSpark Assist</h3>
+    <p>AI coding assistant for VS Code that learns from the team's codebase, internal libraries, and standards so every suggestion fit how the specific team already works.</p>
+  </div>
+  <div class="vs-center">VS</div>
+  <div class="product-them">
+    <h3>GitHub Copilot</h3>
+    <p>Individual AI coding assistant with deep GitHub integration. Trained on public code, strong autocomplete for individual developers, limited awareness of team-specific context.</p>
+  </div>
+</div>
+
+<!-- WHERE WE WIN -->
+<div class="section-header win">Where CodeSpark Wins</div>
+<div class="win-grid">
+  <div class="win-col">
+    <h4>Best Fit Situations</h4>
+    <div class="item"><div class="dot dot-win"></div><div class="item-text"><strong>Onboarding new engineers</strong>:Team patterns surface in real time so new hires ramp up in days, not weeks</div></div>
+    <div class="item"><div class="dot dot-win"></div><div class="item-text"><strong>Teams with internal libraries</strong>:Suggestions reference actual internal APIs, not just public documentation</div></div>
+    <div class="item"><div class="dot dot-win"></div><div class="item-text"><strong>Engineering leads under board pressure</strong>:Team-level ROI dashboard, not just individual productivity stats</div></div>
+    <div class="item"><div class="dot dot-win"></div><div class="item-text"><strong>Code review bottlenecks</strong>:Suggestions align to team standards before code reaches review</div></div>
+  </div>
+  <div class="win-col">
+    <h4>Proof Points</h4>
+    <div class="item"><div class="dot dot-blue"></div><div class="item-text">First meaningful suggestion in under 4 minutes after installation</div></div>
+    <div class="item"><div class="dot dot-blue"></div><div class="item-text">Target: 30% of engineering team actively using daily within 30 days</div></div>
+    <div class="item"><div class="dot dot-blue"></div><div class="item-text">NPS target +40 at 90 days based on 6-month private beta feedback</div></div>
+    <div class="item"><div class="dot dot-blue"></div><div class="item-text">No infrastructure changes or IT tickets required to get started</div></div>
+  </div>
+</div>
+
+<!-- WHERE THEY WIN -->
+<div class="section-header lose">Where GitHub Copilot Has the Advantage</div>
+<div class="content-box lose-bg">
+  <div class="item"><div class="dot dot-lose"></div><div class="item-text"><strong>Brand recognition and trust</strong>: Widely adopted, familiar to procurement teams</div></div>
+  <div class="item"><div class="dot dot-lose"></div><div class="item-text"><strong>Organic Adoption</strong>: It benefits from a built-in user base; engineers who already use it bring that preference into the team</div></div>
+  <div class="item"><div class="dot dot-lose"></div><div class="item-text"><strong>GitHub native teams</strong>: Deep GitHub Actions, PR, and repository integration that CodeSpark does not yet match</div></div>
+</div>
+
+<!-- OBJECTION HANDLING -->
+<div class="section-header blue">Top Objections and Responses</div>
+
+<div class="obj-row">
+  <div class="obj-q">Will our code leave our environment?</div>
+  <div class="obj-a">No:CodeSpark processes your codebase within your secure environment. We do not train on your proprietary code or share it externally. SOC2 certification is on roadmap for Q4 2026. Worth asking Copilot the same question.</div>
+</div>
+
+<div class="obj-row">
+  <div class="obj-q">Will engineers actually use it?</div>
+  <div class="obj-a">Beta data shows the first meaningful suggestion in under 4 minutes, which is lowest-friction onboarding of any team AI tool. Engineers adopt what saves them time immediately. We also offer a 30-day adoption check-in if the adoption is below target, we extend the trial.</div>
+</div>
+
+<div class="obj-row">
+  <div class="obj-q">We already have GitHub Copilot.</div>
+  <div class="obj-a">CodeSpark is not a replacement,it is the team intelligence layer that sits alongside any individual AI tool. Copilot helps each engineer write faster. CodeSpark makes the team ship faster. Many teams run both. We can walk you through the incremental ROI.</div>
+</div>
+
+<div class="obj-row">
+  <div class="obj-q">How do we prove ROI to the CFO?</div>
+  <div class="obj-a">The built-in dashboard tracks time saved per engineer, code review cycle reduction, and onboarding speed improvement given as a weekly leadership report. GitHub Copilot does not offer team-level ROI reporting.</div>
+</div>
+
+<!-- TRAP QUESTIONS -->
+<div class="section-header amber">Discovery Questions to ask the Prospect</div>
+<div class="trap-grid">
+  <div class="trap-item">
+    <div class="q-label">Ask this</div>
+    <p>"How long does it take a new engineer on your team to become independently productive today?"</p>
+  </div>
+  <div class="trap-item">
+    <div class="q-label">Ask this</div>
+    <p>"When engineers use Copilot suggestions, how often do reviewers ask them to change the style or pattern to match your team's standards?"</p>
+  </div>
+  <div class="trap-item">
+    <div class="q-label">Ask this</div>
+    <p>"Can you show your CFO a report today that proves your AI coding tool is improving team velocity not just individual speed?"</p>
+  </div>
+  <div class="trap-item">
+    <div class="q-label">Ask this</div>
+    <p>"If GitHub ships a team-aware feature tomorrow, what would make you choose a purpose-built team AI platform over an add-on to a tool you already use?"</p>
+  </div>
+</div>
+
+<!-- SUMMARY BAR -->
+<div class="summary-bar">
+  <div class="summary-label">Win With</div>
+  <div class="summary-text">
+    <span class="summary-accent">CodeSpark Assist</span> wins when the buyer is a Director or VP of Engineering focused on team velocity, onboarding speed, and measurable ROI not individual developer preference. Always position as <span class="summary-accent">the team layer</span>, never as a Copilot replacement.
+  </div>
+</div>
+
+<div class="footer">
+  Battlecard by Shanthanayaki Lalgudi &nbsp;|&nbsp;
+  <a href="https://github.com/shanthalalgudi/Product-Launch-Playbook" target="_blank">github.com/shanthalalgudi/Product-Launch-Playbook</a>
+  &nbsp;|&nbsp; Portfolio Use Only 
+</div>
+
+</body>
+</html>
