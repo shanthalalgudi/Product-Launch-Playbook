@@ -4,7 +4,7 @@ A reusable Product Launch framework for B2B SaaS and AI products. Includes an in
 
 ---
 
-**Shanthanayaki Lalgudi** — Product Marketing and Strategy Professional bridging customer data, AI automation, and go-to-market execution.
+**Shanthanayaki Lalgudi** Product Marketing and Strategy Professional bridging customer data, AI automation, and go-to-market execution.
 
 - Email: shantharangarajan.lalgudi@gmail.com
 - LinkedIn: linkedin.com/in/slalgudi
@@ -37,15 +37,15 @@ Step 4 : Output saved as a complete launch plan ready to use
 
 The `ProductLaunch_Brief.md` template captures everything needed to generate a full launch plan:
 
-- **Product Basics**: name, category, new vs existing product
-- **The Problem** :market pressure, gap in current solutions, business consequence
-- **Target Buyer** :economic buyer, end user, company size, industry, geography
+- **Product Basics**: Name, Category, New vs Existing product
+- **The Problem** :Market Pressure, Gap in current solutions, Business Consequence
+- **Target Buyer** :Economic buyer, end user, Company Size, Industry, Geography
 - **Buyer Pain Points** : Business, Team, and Tool level pain
 - **Buying Triggers** : What makes them start looking
-- **Buyer Objections** : why they might not buy
+- **Buyer Objections** : Why they might not buy
 - **Competitive Landscape** : Primary competitor, Differentiator
-- **Messaging** : Tagline, three value proposition pillars
-- **Launch Details** : Date, type, budget, regions
+- **Messaging** : Tagline, Three value proposition pillars
+- **Launch Details** : Date, type, Budget, Regions
 - **Channels** : Email, Webinar, LinkedIn, Direct Outreach, Content, Analyst relations
 - **Success Metrics** : Open rate, MQL to SQL, Feature adoption, NPS, Renewal rate, CLV
 - **Risks** : Known risks going into launch
@@ -55,7 +55,7 @@ The `ProductLaunch_Brief.md` template captures everything needed to generate a f
 ## Generated Output Covers
 
 - Problem and solution framing
-- Buyer persona — economic buyer and end user
+- Buyer persona: Economic buyer and end user
 - Competitive positioning and messaging architecture
 - Launch channels and tactics by phase
 - 12 week launch timeline
