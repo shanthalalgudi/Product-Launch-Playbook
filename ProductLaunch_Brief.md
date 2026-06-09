@@ -78,7 +78,7 @@ Tagline (optional):
 
 - Launch Date or Target Quarter: 
 - Launch Type (soft launch / full launch / beta launch): 
-- Budget Level (low / medium / high  -approximate indication): 
+- Budget Level (low / medium / high  approximate indication): 
 - Regions to Launch In: 
 
 ---
